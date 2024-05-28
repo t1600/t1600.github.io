@@ -14,7 +14,13 @@
       
         <tags>
             
-            <tag> rclone;linux;windows </tag>
+            <tag> 教程 </tag>
+            
+            <tag> linux </tag>
+            
+            <tag> rclone </tag>
+            
+            <tag> windows </tag>
             
         </tags>
       
@@ -32,6 +38,8 @@
       
       
         <tags>
+            
+            <tag> 教程 </tag>
             
             <tag> Windows </tag>
             
@@ -51,6 +59,10 @@
       
       
         <tags>
+            
+            <tag> 教程 </tag>
+            
+            <tag> linux </tag>
             
             <tag> Ubuntu </tag>
             
@@ -72,6 +84,10 @@
         <tags>
             
             <tag> Markdown </tag>
+            
+            <tag> 教程 </tag>
+            
+            <tag> linux </tag>
             
         </tags>
       
