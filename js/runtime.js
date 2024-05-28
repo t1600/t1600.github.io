@@ -19,13 +19,13 @@ function createtime() {
   let b = "";
 //   (b =
 //     s < 18 && s >= 9
-//       ? `<img class="boardsign" src="https://sourcebucket.s3.ladydaily.com/badge/F小屋-科研摸鱼中.svg" title="什么时候能够实现财富自由呀~"><br> 本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class="fas fa-heartbeat"></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`
-//       : `<img class="boardsign" src="https://sourcebucket.s3.ladydaily.com/badge/F小屋-下班休息啦.svg" title="下班了就该开开心心地玩耍~"><br> 本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class="fas fa-heartbeat"></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`),
+//       ? `<img class='boardsign' src='https://sourcebucket.s3.ladydaily.com/badge/F小屋-科研摸鱼中.svg' title='什么时候能够实现财富自由呀~'><br> 本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`
+//       : `<img class='boardsign' src='https://sourcebucket.s3.ladydaily.com/badge/F小屋-下班休息啦.svg' title='下班了就该开开心心地玩耍~'><br> 本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`),
 //     document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = b);
   (b =
     s < 18 && s >= 9
-      ? `本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class="fas fa-heartbeat"></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`
-      : `本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class="fas fa-heartbeat"></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`),
+      ? `本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`
+      : `本站居然运行了 ${o} 天 ${s} 小时 ${c} 分 ${g} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${t} 千米，约为 ${a} 个天文单位 🚀`),
     document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = b);
 }
 setInterval(() => {
