@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Python工具Ruff教程 | 我的学习随记</title><meta name="author" content="t"><meta name="copyright" content="t"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Python 代码风格检查工具 Ruff 教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python工具Ruff教程">
+<meta property="og:url" content="https://www.t1600.top/2025/04/04/Ruff%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="我的学习随记">
+<meta property="og:description" content="Python 代码风格检查工具 Ruff 教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f6.png">
+<meta property="article:published_time" content="2025-04-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-03T16:59:01.534Z">
+<meta property="article:author" content="t">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Ruff">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f6.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.t1600.top/2025/04/04/Ruff%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/pwa/16.png"/><link rel="mask-icon" href="/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Python工具Ruff教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-04-04 00:59:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/universe.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="/css/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/01/03/pSiHBh6.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f6.png')"><nav id="nav"><span id="blog-info"><a href="/" title="我的学习随记"><span class="site-name">我的学习随记</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python工具Ruff教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-03T16:00:00.000Z" title="发表于 2025-04-04 00:00:00">2025-04-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-03T16:59:01.534Z" title="更新于 2025-04-04 00:59:01">2025-04-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python工具Ruff教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>Ruff</strong> 是一个用 Rust 编写的极其快速的 Python linter 和代码格式化工具。它的目标是成为现有 Python 工具（如 Flake8、isort、pydocstyle、pyupgrade、autoflake 等）的替代品，并将它们的功能整合到一个高效的工具中。</p>
+<p><strong>Ruff 的主要优点：</strong></p>
+<ul>
+<li><strong>速度极快</strong>：比现有的 linter（如 Flake8 + 插件）快 10-100 倍。</li>
+<li><strong>单一工具</strong>：集成了 linting、格式化、导入排序、现代化语法等多项功能。</li>
+<li><strong>兼容性</strong>：支持 <code>pyproject.toml</code> 配置，并能识别 Flake8 的配置。</li>
+<li><strong>自动修复</strong>：支持对大量 linting 规则进行自动修复。</li>
+<li><strong>内置缓存</strong>：避免对未更改的文件重复分析。</li>
+<li><strong>活跃开发</strong>：项目持续更新，不断添加新规则和功能。</li>
+</ul>
+<p><strong>1. 安装 Ruff</strong></p>
+<p>推荐使用 <code>pip</code> 来安装 Ruff：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install ruff</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你使用 <code>pipx</code>（推荐用于安装命令行工具）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipx install ruff</span><br></pre></td></tr></table></figure>
+
+<p>你也可以通过其他包管理器（如 Conda、Homebrew）安装，具体请参考 Ruff 官方文档。</p>
+<p><strong>2. 基本用法</strong></p>
+<ul>
+<li><strong>检查代码（Linting）</strong></li>
+</ul>
+<p>   在你的项目根目录下运行：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff check .</span><br></pre></td></tr></table></figure>
+
+<p>   这会检查当前目录及其子目录下的所有 Python 文件。Ruff 会输出发现的问题，包括文件路径、行号、列号、规则代码和问题描述。</p>
+<p>   例如：<br>   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">src/my_module.py:5:1: F841 Local variable `x` is assigned to but never used</span><br><span class="line">src/my_module.py:10:80: E501 Line too long (88 &gt; 79 characters)</span><br><span class="line">Found 2 errors.</span><br><span class="line">[*] 1 potentially fixable with the --fix option.</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>自动修复</strong></li>
+</ul>
+<p>   Ruff 可以自动修复许多检测到的问题。使用 <code>--fix</code> 标志：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff check . --fix</span><br></pre></td></tr></table></figure>
+
+<p>   Ruff 会修改文件以修复可修复的问题。对于无法自动修复的问题，它仍会显示出来。</p>
+<ul>
+<li><strong>格式化代码（Formatting）</strong></li>
+</ul>
+<p>   Ruff 包含一个与 Black 兼容的代码格式化工具。运行：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff format .</span><br></pre></td></tr></table></figure>
+
+<p>   这会根据配置的样式格式化项目中的 Python 文件。</p>
+<ul>
+<li><strong>检查并格式化</strong></li>
+</ul>
+<p>   你可以一次性运行检查和格式化：</p>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff .</span><br></pre></td></tr></table></figure>
+<p>   这等同于先运行 <code>ruff format .</code> 再运行 <code>ruff check . --fix</code>。</p>
+<ul>
+<li><strong>查看可用规则</strong></li>
+</ul>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff rule --all</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>解释特定规则</strong></li>
+</ul>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruff rule F841</span><br></pre></td></tr></table></figure>
+<p>   这会显示规则 F841 (Unused variable) 的详细解释。</p>
+<p><strong>3. 配置 Ruff</strong></p>
+<p>Ruff 主要通过项目根目录下的 <code>pyproject.toml</code> 文件或独立的 <code>ruff.toml</code> 文件进行配置。推荐使用 <code>pyproject.toml</code>，因为它也是许多其他 Python 工具（如 Poetry, Black, Pytest）的标准配置文件。</p>
+<p>在 <code>pyproject.toml</code> 中，Ruff 的配置位于 <code>[tool.ruff]</code> 部分。</p>
+<p>**基本配置示例 (<code>pyproject.toml</code>)**：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="comment"># 设置目标 Python 版本 (例如 &quot;py310&quot; 代表 Python 3.10)</span></span><br><span class="line"><span class="comment"># 这会影响一些代码升级和语法检查规则</span></span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py310&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 选择要启用的规则代码或前缀</span></span><br><span class="line"><span class="comment"># F: Pyflakes, E/W: pycodestyle, I: isort, U: pyupgrade, B: flake8-bugbear 等</span></span><br><span class="line"><span class="comment"># 默认启用 F, E, W</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;W&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;U&quot;</span>, <span class="string">&quot;B&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽略特定的规则</span></span><br><span class="line"><span class="attr">ignore</span> = [<span class="string">&quot;E501&quot;</span>] <span class="comment"># 例如, 忽略行过长错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定要排除检查的文件或目录模式</span></span><br><span class="line"><span class="attr">exclude</span> = [</span><br><span class="line">    <span class="string">&quot;.bzr&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.direnv&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.eggs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.git&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.hg&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.mypy_cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.nox&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.pants.d&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.pytype&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.ruff_cache&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.svn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.tox&quot;</span>,</span><br><span class="line">    <span class="string">&quot;.venv&quot;</span>,</span><br><span class="line">    <span class="string">&quot;__pypackages__&quot;</span>,</span><br><span class="line">    <span class="string">&quot;_build&quot;</span>,</span><br><span class="line">    <span class="string">&quot;buck-out&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>,</span><br><span class="line">    <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="string">&quot;node_modules&quot;</span>,</span><br><span class="line">    <span class="string">&quot;venv&quot;</span>,</span><br><span class="line">    <span class="string">&quot;migrations/&quot;</span>, <span class="comment"># 忽略 Django migrations 目录</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每行的最大长度 (用于 E501 和格式化)</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">88</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 仅启用可自动修复的规则子集进行修复</span></span><br><span class="line"><span class="comment"># fixable = [&quot;A&quot;, &quot;B&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从自动修复中排除特定规则</span></span><br><span class="line"><span class="comment"># unfixable = [&quot;B&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [tool.ruff.lint] # (可选) Linting 相关的特定配置可以放在这里</span></span><br><span class="line"><span class="comment"># select = [&quot;E&quot;, &quot;F&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [tool.ruff.format] # (可选) Formatter 相关的特定配置可以放在这里</span></span><br><span class="line"><span class="comment"># quote-style = &quot;double&quot; # 使用双引号而非单引号</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 特定插件的配置 (例如 isort)</span></span><br><span class="line"><span class="section">[tool.ruff.lint.isort]</span></span><br><span class="line"><span class="attr">known-first-party</span> = [<span class="string">&quot;my_package&quot;</span>] <span class="comment"># 将 &#x27;my_package&#x27; 视为第一方库</span></span><br><span class="line"><span class="comment"># required-imports = [&quot;from __future__ import annotations&quot;] # 强制添加某个导入</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pyupgrade 配置</span></span><br><span class="line"><span class="section">[tool.ruff.lint.pyupgrade]</span></span><br><span class="line"><span class="comment"># 保留 Python 3.9 以下版本的类型注解 (如果 target-version &lt; &quot;py310&quot;)</span></span><br><span class="line"><span class="attr">keep-runtime-typing</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>关键配置选项说明:</strong></p>
+<ul>
+<li><code>target-version</code>: 非常重要，确保 Ruff 根据你项目使用的 Python 版本应用正确的规则。</li>
+<li><code>select</code>: 启用规则集合。你可以使用前缀（如 <code>F</code> 代表 Pyflakes 的所有规则）或具体代码（如 <code>F841</code>）。查看 Ruff 文档获取完整的规则列表。</li>
+<li><code>ignore</code>: 禁用特定的规则。</li>
+<li><code>exclude</code>: 排除不需要检查或格式化的文件&#x2F;目录。默认已包含常见的虚拟环境、版本控制和缓存目录。</li>
+<li><code>line-length</code>: 设置代码行的最大长度，影响 <code>E501</code> 规则和 <code>ruff format</code>。</li>
+<li><code>fixable</code>&#x2F;<code>unfixable</code>: 更精细地控制哪些规则参与自动修复。</li>
+<li>插件配置 (<code>[tool.ruff.lint.&lt;plugin_name&gt;]</code>)：为特定的规则集（如 isort, pydocstyle）提供更详细的配置。</li>
+</ul>
+<p><strong>4. 常用规则和插件</strong></p>
+<p>Ruff 内置支持并重新实现了许多流行的 Flake8 插件和独立工具的规则，包括：</p>
+<ul>
+<li><strong>Pyflakes (F)</strong>: 检测基本错误，如未使用的导入、未定义的变量。</li>
+<li><strong>pycodestyle (E, W)</strong>: 检查代码风格是否符合 PEP 8 指南（缩进、空格、命名等）。</li>
+<li><strong>isort (I)</strong>: 对导入进行排序和分组。</li>
+<li><strong>pyupgrade (U)</strong>: 升级到更现代的 Python 语法。</li>
+<li><strong>flake8-bugbear (B)</strong>: 检测可能的逻辑错误和可疑代码。</li>
+<li><strong>flake8-comprehensions (C4)</strong>: 鼓励使用更简洁的推导式。</li>
+<li><strong>flake8-simplify (SIM)</strong>: 简化复杂的代码结构。</li>
+<li><strong>pydocstyle (D)</strong>: 检查文档字符串（docstrings）的风格。</li>
+<li>… 等等，支持的规则集在不断增加。</li>
+</ul>
+<p><strong>示例：Ruff 检测和修复</strong></p>
+<ul>
+<li><p><strong>未使用的导入 (F401)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os <span class="comment"># Ruff: F401 `os` imported but unused</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>ruff check . --fix</code> 会自动删除 <code>import os</code> 这一行。</p>
+</li>
+<li><p><strong>导入排序 (I)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os <span class="comment"># Ruff: I001 Import block is un-sorted or un-formatted</span></span><br></pre></td></tr></table></figure>
+<p><code>ruff check . --fix</code> 或 <code>ruff format .</code> 会将其重新排序为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>现代语法 (U)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果 target-version &gt;= &quot;py36&quot;</span></span><br><span class="line">my_string = <span class="string">&quot;Value: %s&quot;</span> % value <span class="comment"># Ruff: UP031 Use format specifiers instead of %-style formatting</span></span><br></pre></td></tr></table></figure>
+<p><code>ruff check . --fix</code> 会将其改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_string = <span class="string">f&quot;Value: <span class="subst">&#123;value&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>5. 集成</strong></p>
+<ul>
+<li><p><strong>编辑器集成</strong></p>
+<ul>
+<li><strong>VS Code</strong>: 安装官方的 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff VS Code 插件</a>。它可以在你编写代码时实时显示 linting 问题，并提供格式化和快速修复功能。通常需要在 VS Code 的设置 (settings.json) 中启用 Ruff 作为格式化工具和 linter。<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;[python]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span><span class="punctuation">:</span> <span class="string">&quot;charliermarsh.ruff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 可选：保存时自动格式化</span></span><br><span class="line">    <span class="attr">&quot;editor.codeActionsOnSave&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;source.fixAll&quot;</span><span class="punctuation">:</span> <span class="string">&quot;explicit&quot;</span><span class="punctuation">,</span> <span class="comment">// 可选：保存时运行 Ruff 的自动修复 (可以设为 true 自动修复)</span></span><br><span class="line">      <span class="attr">&quot;source.organizeImports&quot;</span><span class="punctuation">:</span> <span class="string">&quot;explicit&quot;</span> <span class="comment">// 可选: 保存时自动整理 import</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ruff.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// &quot;ruff.fixAll&quot;: true, // 如果希望保存时总是执行 --fix</span></span><br><span class="line">  <span class="comment">// &quot;ruff.organizeImports&quot;: true // 如果希望保存时总是整理 imports</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>PyCharm&#x2F;IntelliJ</strong>: Ruff 可以作为 <a target="_blank" rel="noopener" href="https://ruff.rs/docs/integrations/#pycharm">外部工具</a> 集成。或者使用 File Watchers 插件在文件保存时自动运行 Ruff。社区也有一些 Ruff 插件可用。</li>
+</ul>
+</li>
+<li><p><strong>预提交钩子 (Pre-commit Hooks)</strong><br>使用 <code>pre-commit</code> 可以在提交代码前自动运行 Ruff。在你的 <code>.pre-commit-config.yaml</code> 文件中添加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line"><span class="bullet">-</span>   <span class="attr">repo:</span> <span class="string">https://github.com/astral-sh/ruff-pre-commit</span></span><br><span class="line">    <span class="comment"># 根据需要选择 Ruff 的版本</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="string">v0.4.1</span> <span class="comment"># 使用最新的稳定版 tag</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">        <span class="comment"># 同时运行 linter 和 formatter</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff</span></span><br><span class="line">          <span class="attr">args:</span> [<span class="string">--fix</span>] <span class="comment"># 可选: 启用自动修复</span></span><br><span class="line">        <span class="comment"># 或者, 分开运行 formatter 和 linter</span></span><br><span class="line">        <span class="comment"># - id: ruff-format</span></span><br><span class="line">        <span class="comment"># - id: ruff</span></span><br><span class="line">        <span class="comment">#   args: [--fix]</span></span><br></pre></td></tr></table></figure>
+<p>然后运行 <code>pre-commit install</code> 来安装钩子。</p>
+</li>
+<li><p><strong>CI&#x2F;CD (例如 GitHub Actions)</strong><br>在你的 CI 工作流程中添加一个步骤来运行 Ruff，确保合并到主分支的代码是符合规范的。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Ruff</span> <span class="string">Check</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span> [<span class="string">push</span>, <span class="string">pull_request</span>]</span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">ruff:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Set</span> <span class="string">up</span> <span class="string">Python</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-python@v5</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">python-version:</span> <span class="string">&#x27;3.10&#x27;</span> <span class="comment"># 选择你的项目 Python 版本</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Ruff</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">pip</span> <span class="string">install</span> <span class="string">ruff</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Run</span> <span class="string">Ruff</span> <span class="string">Linter</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">ruff</span> <span class="string">check</span> <span class="string">.</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Run</span> <span class="string">Ruff</span> <span class="string">Formatter</span> <span class="string">Check</span> <span class="string">(Optional)</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">ruff</span> <span class="string">format</span> <span class="string">.</span> <span class="string">--check</span> <span class="comment"># --check 只检查不修改，CI 中常用</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>6. 总结</strong></p>
+<p>Ruff 是一个强大、快速且易于使用的 Python 工具，可以显著提高代码质量和开发效率。通过整合多种检查和格式化功能，它可以简化你的开发工作流和 CI&#x2F;CD 配置。强烈建议尝试将其集成到你的 Python 项目中。</p>
+<p>希望这个教程对你有所帮助！如果你有任何具体的问题，随时可以提问。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.t1600.top">t</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.t1600.top/2025/04/04/Ruff%E6%95%99%E7%A8%8B/">https://www.t1600.top/2025/04/04/Ruff教程/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.t1600.top" target="_blank">我的学习随记</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/Ruff/">Ruff</a></div><div class="post_share"><div class="social-share" data-image="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/04/04/Dockerfile%E6%95%99%E7%A8%8B/" title="Dockerfile 教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebc470ba3d5a1d7ec5901.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Dockerfile 教程</div></div></a></div><div class="next-post pull-right"><a href="/2025/04/04/uv%E6%95%99%E7%A8%8B/" title="Python uv 教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f5.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python uv 教程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/07/15/Css%E9%80%89%E6%8B%A9%E5%99%A8/" title="Css选择器"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66940fe5d9c307b7e95d11dd.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-15</div><div class="title">Css选择器</div></div></a></div><div><a href="/2025/04/04/Dockerfile%E6%95%99%E7%A8%8B/" title="Dockerfile 教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebc470ba3d5a1d7ec5901.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-04</div><div class="title">Dockerfile 教程</div></div></a></div><div><a href="/2023/11/24/Markdown%E6%95%99%E7%A8%8B/" title="Markdown教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/660189bf9f345e8d031a08d0.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-24</div><div class="title">Markdown教程</div></div></a></div><div><a href="/2023/12/01/Ubuntu%E8%B0%83%E6%95%B4SWAP%E5%88%86%E5%8C%BA%E5%A4%A7%E5%B0%8F/" title="Ubuntu调整Swap分区大小"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66558799d9c307b7e998afc5.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-01</div><div class="title">Ubuntu调整Swap分区大小</div></div></a></div><div><a href="/2023/12/25/Windows%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/" title="Windows装机"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6655ba33d9c307b7e9d3dc90.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-25</div><div class="title">Windows装机</div></div></a></div><div><a href="/2024/01/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8rclone%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" title="记一次使用rclone同步文件"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6655c7a8d9c307b7e9e2e21f.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-30</div><div class="title">记一次使用rclone同步文件</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s1.ax1x.com/2023/01/03/pSiHBh6.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">t</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/t1600"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/t1600" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1605457998@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/04/04/Dockerfile%E6%95%99%E7%A8%8B/" title="Dockerfile 教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebc470ba3d5a1d7ec5901.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dockerfile 教程"/></a><div class="content"><a class="title" href="/2025/04/04/Dockerfile%E6%95%99%E7%A8%8B/" title="Dockerfile 教程">Dockerfile 教程</a><time datetime="2025-04-03T16:00:00.000Z" title="发表于 2025-04-04 00:00:00">2025-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/04/Ruff%E6%95%99%E7%A8%8B/" title="Python工具Ruff教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f6.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python工具Ruff教程"/></a><div class="content"><a class="title" href="/2025/04/04/Ruff%E6%95%99%E7%A8%8B/" title="Python工具Ruff教程">Python工具Ruff教程</a><time datetime="2025-04-03T16:00:00.000Z" title="发表于 2025-04-04 00:00:00">2025-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/04/uv%E6%95%99%E7%A8%8B/" title="Python uv 教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic1.imgdb.cn/item/67eebe3e0ba3d5a1d7ec59f5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Python uv 教程"/></a><div class="content"><a class="title" href="/2025/04/04/uv%E6%95%99%E7%A8%8B/" title="Python uv 教程">Python uv 教程</a><time datetime="2025-04-03T16:00:00.000Z" title="发表于 2025-04-04 00:00:00">2025-04-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/15/Css%E9%80%89%E6%8B%A9%E5%99%A8/" title="Css选择器"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/66940fe5d9c307b7e95d11dd.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Css选择器"/></a><div class="content"><a class="title" href="/2024/07/15/Css%E9%80%89%E6%8B%A9%E5%99%A8/" title="Css选择器">Css选择器</a><time datetime="2024-07-14T18:00:00.000Z" title="发表于 2024-07-15 02:00:00">2024-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8rclone%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" title="记一次使用rclone同步文件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://pic.imgdb.cn/item/6655c7a8d9c307b7e9e2e21f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记一次使用rclone同步文件"/></a><div class="content"><a class="title" href="/2024/01/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8rclone%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" title="记一次使用rclone同步文件">记一次使用rclone同步文件</a><time datetime="2024-01-30T14:05:10.000Z" title="发表于 2024-01-30 22:05:10">2024-01-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 By t</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>! <a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><span>豫ICP备2023025998号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer src="/js/light.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.3.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.10.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.t1600.top/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://cf.t1600.top/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于Cloudflare" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Cloudflare-important?style=flat&amp;logo=cloudflare" alt=""/></a><a class="github-badge" target="_blank" href="https://t1600.github.io/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '1s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '2');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
